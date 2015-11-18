@@ -1,0 +1,10 @@
+D:\Workspace\Workspace\MVCDemo\WcfServices\bin\Debug\WcfServices.dll.config
+D:\Workspace\Workspace\MVCDemo\WcfServices\bin\Debug\WcfServices.dll
+D:\Workspace\Workspace\MVCDemo\WcfServices\bin\Debug\WcfServices.pdb
+D:\Workspace\Workspace\MVCDemo\WcfServices\bin\Debug\BLL.dll
+D:\Workspace\Workspace\MVCDemo\WcfServices\bin\Debug\Core.dll
+D:\Workspace\Workspace\MVCDemo\WcfServices\bin\Debug\BLL.pdb
+D:\Workspace\Workspace\MVCDemo\WcfServices\bin\Debug\Core.pdb
+D:\Workspace\Workspace\MVCDemo\WcfServices\obj\Debug\WcfServices.csprojResolveAssemblyReference.cache
+D:\Workspace\Workspace\MVCDemo\WcfServices\obj\Debug\WcfServices.dll
+D:\Workspace\Workspace\MVCDemo\WcfServices\obj\Debug\WcfServices.pdb

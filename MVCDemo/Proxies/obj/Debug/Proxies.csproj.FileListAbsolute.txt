@@ -1,0 +1,8 @@
+D:\Workspace\Workspace\MVCDemo\Proxies\bin\Debug\Proxies.dll.config
+D:\Workspace\Workspace\MVCDemo\Proxies\bin\Debug\Proxies.dll
+D:\Workspace\Workspace\MVCDemo\Proxies\bin\Debug\Proxies.pdb
+D:\Workspace\Workspace\MVCDemo\Proxies\bin\Debug\Core.dll
+D:\Workspace\Workspace\MVCDemo\Proxies\bin\Debug\Core.pdb
+D:\Workspace\Workspace\MVCDemo\Proxies\obj\Debug\Proxies.csprojResolveAssemblyReference.cache
+D:\Workspace\Workspace\MVCDemo\Proxies\obj\Debug\Proxies.dll
+D:\Workspace\Workspace\MVCDemo\Proxies\obj\Debug\Proxies.pdb
