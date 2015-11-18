@@ -5,3 +5,12 @@ D:\Workspace\Workspace\MVCDemo\BLL\bin\Debug\Core.pdb
 D:\Workspace\Workspace\MVCDemo\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 D:\Workspace\Workspace\MVCDemo\BLL\obj\Debug\BLL.dll
 D:\Workspace\Workspace\MVCDemo\BLL\obj\Debug\BLL.pdb
+E:\WorkSpace\LearnGit\MVCDemo\BLL\bin\Debug\BLL.dll
+E:\WorkSpace\LearnGit\MVCDemo\BLL\bin\Debug\BLL.pdb
+E:\WorkSpace\LearnGit\MVCDemo\BLL\bin\Debug\Core.dll
+E:\WorkSpace\LearnGit\MVCDemo\BLL\bin\Debug\Aspose.Words.dll
+E:\WorkSpace\LearnGit\MVCDemo\BLL\bin\Debug\Aspose.Cells.dll
+E:\WorkSpace\LearnGit\MVCDemo\BLL\bin\Debug\Core.pdb
+E:\WorkSpace\LearnGit\MVCDemo\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\WorkSpace\LearnGit\MVCDemo\BLL\obj\Debug\BLL.dll
+E:\WorkSpace\LearnGit\MVCDemo\BLL\obj\Debug\BLL.pdb

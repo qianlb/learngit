@@ -31,14 +31,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Cells">
-      <HintPath>..\..\WebTest\Common\bin\Release\Aspose.Cells.dll</HintPath>
+      <HintPath>..\..\..\..\Peter 电脑备份\G盘\G盘\Source Code\Harman RFQ System\Harman RFQ System\HarmanRFQSystem.Common\bin\Debug\Aspose.Cells.dll</HintPath>
     </Reference>
     <Reference Include="Aspose.Words">
-      <HintPath>..\..\WebTest\Common\bin\Release\Aspose.Words.dll</HintPath>
+      <HintPath>..\..\..\..\Peter 电脑备份\G盘\G盘\Source Code\SmartLab\MVCSmartLab\SmartLabSystem\SmartLab.Common\bin\Debug\Aspose.Words.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />

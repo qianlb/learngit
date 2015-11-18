@@ -446,27 +446,27 @@ namespace Common.Tools
         /// 获取一个文件的长度,单位为KB
         /// </summary>
         /// <param name="filePath">文件的路径</param>        
-        public static double GetFileSizeByKB(string filePath)
-        {
-            //创建一个文件对象
-            FileInfo fi = new FileInfo(filePath);
+        //public static double GetFileSizeByKB(string filePath)
+        //{
+        //    //创建一个文件对象
+        //    FileInfo fi = new FileInfo(filePath);
 
-            //获取文件的大小
-            return ConvertHelper.ToDouble(ConvertHelper.ToDouble(fi.Length) / 1024, 1);
-        }
+        //    //获取文件的大小
+        //    return ConvertHelper.ToDouble(ConvertHelper.ToDouble(fi.Length) / 1024, 1);
+        //}
 
         /// <summary>
         /// 获取一个文件的长度,单位为MB
         /// </summary>
         /// <param name="filePath">文件的路径</param>        
-        public static double GetFileSizeByMB(string filePath)
-        {
-            //创建一个文件对象
-            FileInfo fi = new FileInfo(filePath);
+        //public static double GetFileSizeByMB(string filePath)
+        //{
+        //    //创建一个文件对象
+        //    FileInfo fi = new FileInfo(filePath);
 
-            //获取文件的大小
-            return ConvertHelper.ToDouble(ConvertHelper.ToDouble(fi.Length) / 1024 / 1024, 1);
-        }
+        //    //获取文件的大小
+        //    return ConvertHelper.ToDouble(ConvertHelper.ToDouble(fi.Length) / 1024 / 1024, 1);
+        //}
         #endregion
 
         #region 获取指定目录中的文件列表
@@ -727,30 +727,30 @@ namespace Common.Tools
         /// 将流读取到缓冲区中
         /// </summary>
         /// <param name="stream">原始流</param>
-        public static byte[] StreamToBytes(Stream stream)
-        {
-            try
-            {
-                //创建缓冲区
-                byte[] buffer = new byte[stream.Length];
+        //public static byte[] StreamToBytes(Stream stream)
+        //{
+        //    try
+        //    {
+        //        //创建缓冲区
+        //        byte[] buffer = new byte[stream.Length];
 
-                //读取流
-                stream.Read(buffer, 0, ConvertHelper.ToInt32(stream.Length));
+        //        //读取流
+        //        stream.Read(buffer, 0, ConvertHelper.ToInt32(stream.Length));
 
-                //返回流
-                return buffer;
-            }
-            catch (Exception ex)
-            {
+        //        //返回流
+        //        return buffer;
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                throw ex;
-            }
-            finally
-            {
-                //关闭流
-                stream.Close();
-            }
-        }
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        //关闭流
+        //        stream.Close();
+        //    }
+        //}
         #endregion
 
         #region 将文件读取到缓冲区中
