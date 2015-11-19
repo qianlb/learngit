@@ -13,6 +13,5 @@ E:\WorkSpace\LearnGit\MVCDemo\Proxies\bin\Debug\Core.dll
 E:\WorkSpace\LearnGit\MVCDemo\Proxies\bin\Debug\Aspose.Words.dll
 E:\WorkSpace\LearnGit\MVCDemo\Proxies\bin\Debug\Aspose.Cells.dll
 E:\WorkSpace\LearnGit\MVCDemo\Proxies\bin\Debug\Core.pdb
-E:\WorkSpace\LearnGit\MVCDemo\Proxies\obj\Debug\Proxies.csprojResolveAssemblyReference.cache
 E:\WorkSpace\LearnGit\MVCDemo\Proxies\obj\Debug\Proxies.dll
 E:\WorkSpace\LearnGit\MVCDemo\Proxies\obj\Debug\Proxies.pdb
