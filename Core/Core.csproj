@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E6E7B703-CEBF-4EBB-A734-772B67A97C37}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\..\..\..\Peter 电脑备份\G盘\G盘\Source Code\Harman RFQ System\Harman RFQ System\HarmanRFQSystem.Common\bin\Debug\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\..\..\..\Peter 电脑备份\G盘\G盘\Source Code\SmartLab\MVCSmartLab\SmartLabSystem\SmartLab.Common\bin\Debug\Aspose.Words.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enum\CodeDescription.cs" />
+    <Compile Include="Enum\OrderSeq.cs" />
+    <Compile Include="Enum\Pharamcy_Wholesaler.cs" />
+    <Compile Include="Enum\SaveSearchType.cs" />
+    <Compile Include="Extension\DatatExtension.cs" />
+    <Compile Include="Extension\SqlRepositoryExtension.cs" />
+    <Compile Include="HttpClientHolder.cs" />
+    <Compile Include="Interface\IHubbleRepository.cs" />
+    <Compile Include="Interface\ILanguagePriority.cs" />
+    <Compile Include="Interface\ISqlRepository.cs" />
+    <Compile Include="Logger\File.cs" />
+    <Compile Include="Logger\Instance.cs" />
+    <Compile Include="Logger\LogFile.cs" />
+    <Compile Include="Logger\LoggerHelper.cs" />
+    <Compile Include="Logger\Path.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\SqlRepository.cs" />
+    <Compile Include="Service\ErrorHandlerBehaviorAttribute.cs" />
+    <Compile Include="Service\LanguageHandlerBehaviorAttribute.cs" />
+    <Compile Include="Service\LanguageMessageInspector.cs" />
+    <Compile Include="Service\LanguagePriority.cs" />
+    <Compile Include="Service\Request.cs" />
+    <Compile Include="Service\Response.cs" />
+    <Compile Include="Service\TableRequest.cs" />
+    <Compile Include="Service\TableResponse.cs" />
+    <Compile Include="Service\Utility.cs" />
+    <Compile Include="Tools\AsposeExcel.cs" />
+    <Compile Include="Tools\AsposeWord.cs" />
+    <Compile Include="Tools\BASE64.cs" />
+    <Compile Include="Tools\FileHelper.cs" />
+    <Compile Include="Tools\MobileHelper.cs" />
+    <Compile Include="Tools\XMLConvert.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
