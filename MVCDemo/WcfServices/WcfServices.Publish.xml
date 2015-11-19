@@ -1,0 +1,12 @@
+<publishData>
+  <publishTarget publishUrl="D:\Work\WCF Test\">
+    <file relUrl="bin/BLL.pdb" publishTime="11/05/2015 10:00:59" />
+    <file relUrl="bin/Core.pdb" publishTime="11/05/2015 10:00:59" />
+    <file relUrl="bin/Core.dll" publishTime="11/05/2015 10:00:59" />
+    <file relUrl="bin/WcfServices.dll.config" publishTime="11/05/2015 09:44:46" />
+    <file relUrl="Web.config" publishTime="11/05/2015 09:44:46" />
+    <file relUrl="bin/BLL.dll" publishTime="11/05/2015 10:00:59" />
+    <file relUrl="bin/WcfServices.pdb" publishTime="11/05/2015 10:00:59" />
+    <file relUrl="bin/WcfServices.dll" publishTime="11/05/2015 10:00:59" />
+  </publishTarget>
+</publishData>

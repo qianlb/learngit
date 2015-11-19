@@ -1,0 +1,11 @@
+D:\Workspace\Workspace\MVCDemo\Core\bin\Debug\Core.dll
+D:\Workspace\Workspace\MVCDemo\Core\bin\Debug\Core.pdb
+D:\Workspace\Workspace\MVCDemo\Core\obj\Debug\Core.dll
+D:\Workspace\Workspace\MVCDemo\Core\obj\Debug\Core.pdb
+D:\Workspace\Workspace\MVCDemo\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+E:\WorkSpace\LearnGit\MVCDemo\Core\bin\Debug\Core.dll
+E:\WorkSpace\LearnGit\MVCDemo\Core\bin\Debug\Core.pdb
+E:\WorkSpace\LearnGit\MVCDemo\Core\bin\Debug\Aspose.Cells.dll
+E:\WorkSpace\LearnGit\MVCDemo\Core\bin\Debug\Aspose.Words.dll
+E:\WorkSpace\LearnGit\MVCDemo\Core\obj\Debug\Core.dll
+E:\WorkSpace\LearnGit\MVCDemo\Core\obj\Debug\Core.pdb

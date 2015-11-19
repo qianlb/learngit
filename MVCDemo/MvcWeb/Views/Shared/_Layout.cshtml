@@ -1,0 +1,720 @@
+﻿@using Core
+@using MvcWeb.Constants
+@using System.Web.Optimization;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GBI_SOURCE</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link href="/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- Loading GBI fonts -->
+    <link rel="stylesheet" href="/Content/css/typo.css">
+    <!-- Loading GBI UI -->
+    <link rel="stylesheet" href="/Content/css/gbi-ui.css">
+    <link rel="stylesheet" href="/Content/css/index.css">
+    <link href="/Content/css/perfect-scrollbar.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="/Content/images/favicon.ico">
+    @Scripts.Render("~/bundles/layout")
+</head>
+<body class="page-body">
+
+    <div class="modal fade" id="SystemModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-times" data-dismiss="modal"><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">System requirements</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        GBI products are built to work best in the latest desktop and mobile browsers. Older browsers  may display system content differently.
+                    </p>
+                    <div class="h3">
+                        <span class="icon-chrome mrm"></span><span class="icon-safari mrm"></span><span class="icon-firefox mrm"></span><span class="icon-IE mrm"></span>
+                    </div>
+                    Internet Explorer 8 is also supported. However, please be aware that some pages  may not look and behave well.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary btn-wide">Got it</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="PrivacyModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <!--_PrivacyModalPartial-->
+    </div>
+
+    <div class="modal fade" id="TermsModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <!--_TermsModalPartial-->
+    </div>
+
+    <div class="modal fade" id="ExceedModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <!--slide 1-->
+        <div class="modal-dialog" id="slide1">
+            <!--style="background-color:red"-->
+            <div class="modal-alert">
+                <p class="lead pbl">
+                    Dear <b>Admin</b>,
+                    <br /><br />
+                    You only have <b class="text-primary limitNum">5</b> free clicks left to your <b class="text-primary">SOURCE&nbsp;prime</b> trial account!
+                    <br /><br />
+                    Expand your access by signing up for the complete version of <b class="text-primary">SOURCE&nbsp;prime</b>.<br />
+                    With unlimited access to news and special market reports, you will be equipped with the information you need for better decision making.
+                </p>
+                <p class="lead xl pbl">Why don't you sign up today!</p>
+                <button type="button" id="showSecond" class="btn btn-embossed btn-primary btn-lg btn-wide">Upgrade</button>
+                <button type="button" id="laterBtn" data-dismiss="modal" class="btn btn-embossed btn-inverse btn-lg btn-wide">No thanks, later</button>
+            </div>
+        </div>
+        <!-- /slide 1-->
+        <!--slide 2-->
+        <div class="modal-dialog " id="slide2">
+            <div class=" modal-alert">
+                <form class="form-horizontal" role="form" id="upgrade"></form>
+                <button type="button" id="upgradeBtn" class="btn btn-embossed btn-primary btn-hg btn-wide center-block mvl">Send request</button>
+            </div>
+        </div>
+        <!-- /slide 2-->
+        <!--slide 3-->
+        <div class="modal-dialog " id="slide3">
+            <div class=" modal-alert">
+                <p class="lead  text-center">
+                    @*@getUserName()*@
+                </p>
+                <p class="lead pbl">
+                    Thank you for your interest in GBI SOURCE.  We have received your request for information on our intelligence services.  A member of our commercial team will contact you for more details.
+
+                </p>
+            </div>
+        </div>
+        <!-- /slide 3-->
+    </div>
+
+    <div class="modal fade" id="AdvancedSearchModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-times" data-dismiss="modal"><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">@*BOOLEAN_SEARCH*@</h4>
+                </div>
+                @RenderSection("AdvancedSearch", false)
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">CANCEL</button>
+                    <button type="button" class="btn btn-primary" id="booleanSearch">SEARCH</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="TableOptionModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-times" data-dismiss="modal"><span class="sr-only">CLOSE</span></button>
+                    <h4 class="modal-title">TABLE_DISPLAY_OPTIONS</h4>
+                </div>
+                <div class="modal-body">
+                    @RenderSection("TableOptionModal", false)
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">CANCEL</button>
+                    <button type="button" class="btn btn-primary submitOptionColumn">APPLY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="AdvancedSaveModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-times" data-dismiss="modal"><span class="sr-only">CLOSE</span></button>
+                    <h4 class="modal-title">SAVE_NAME</h4>
+                </div>
+                <div class="modal-body">
+                    <label class="control-label">INPUT_SAVE_NAME</label>
+                    <div class="controls">
+                        <input type="text" id="saveText" class="form-control" /><lable class="hide" id="savenamenote">PLEASE_INPUT_NAME</lable>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">CANCEL</button>
+                    <button type="button" class="btn btn-primary" id="saveBtn">SAVE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ChangePassModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="UserTerms" data-check="@*@userTerms*@" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <!--_UserTermsModalPartial-->
+            </div>
+        </div>
+    </div>
+
+    <aside data-sidebar>
+        <div class="overlay-menu">
+            <header class="pal">
+                <b class="pls text-inverse">SOURCE</b>
+                <button data-sidebar-button="" type="button" class="close icon-times pull-right"><span class="sr-only">Close</span></button>
+            </header>
+            <div class="phl">
+                <a href="/Home/Index" class="btn btn-link btn-xs btn-link-inverse">HOME_LOWER</a><br>
+                <a href="" class="btn btn-link btn-xs btn-link-inverse disabled">CATALOG_LOWER</a><br>
+                <a href="/Profile/Index" class="btn btn-link btn-xs btn-link-inverse">PROFILE</a><br>
+                <a href="#" class="btn btn-link btn-xs btn-link-inverse disabled">BARMANAGEMENT</a>
+                <hr />
+                <a href="/News/Index" class="btn btn-link btn-xs btn-link-inverse">GLOBALNEWSWIRE</a><br />
+                <hr />
+
+                <div class="btn-group mvm">
+                    @*@if (bundles.Contains("Source Global"))
+                    {*@
+                        <button class="btn btn-inverse btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="sidebar-name">@*@setDefaultBundle(*@)</span>
+                            <span class="caret"></span>
+                        </button>
+                        <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+                        <ul class="dropdown-menu dropdown-inverse" role="menu" id="sidebar-bundle">
+                            <li><a data-id="country-china">China</a></li>
+                            <li><a data-id="country-latin">Latin America</a></li>
+                        </ul>
+                    @*}
+                    else if (bundles.Contains("Source Latam"))
+                    {*@
+                        <button class="btn btn-inverse btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="sidebar-name">Latin America</span>
+                            <span class="caret"></span>
+                        </button>
+                        <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+                        <ul class="dropdown-menu dropdown-inverse" role="menu" id="sidebar-bundle">
+                            <li><a data-id="country-latin">Latin America</a></li>
+                        </ul>
+                    @*}
+                    else
+                    {*@
+                        <button class="btn btn-inverse btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="sidebar-name">China</span>
+                            <span class="caret"></span>
+                        </button>
+                        <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+                        <ul class="dropdown-menu dropdown-inverse" role="menu" id="sidebar-bundle">
+                            <li><a data-id="country-china">China</a></li>
+                        </ul>
+                    @*}*@
+                </div>
+
+                <div id="country-china" class=" dropdown-div">
+                    <br />
+                   
+                                    <a href="/News/DetailDirectNews?filterType=country&filterKey=23" class="btn btn-link btn-xs btn-link-inverse">NEWS_WIRE_LOWER</a><br>
+                                  
+                              
+                                <a href="/Product/Index" class="btn btn-link btn-xs btn-link-inverse">PRODUCTS_LOWER</a><br>
+                               
+                                <a href="/Company/Index" class="btn btn-link btn-xs btn-link-inverse">COMPANY_LOWER</a><br>
+                               
+                                <a href="/Pipeline/Index" class="btn btn-link btn-xs btn-link-inverse">PIPELINES_LOWER</a><br>
+                                 
+                                <a href="/Registration/Index" class="btn btn-link btn-xs btn-link-inverse">REGISTRATION_LOWER</a><br>
+                                 
+                                <a href="/Tendering/Index" class="btn btn-link btn-xs btn-link-inverse">TENDERING</a><br>
+                                 
+                                <a href="/ClinicalTrial/Index" class="btn btn-link btn-xs btn-link-inverse">CLINICALTRIAL</a><br>
+                                  
+                                <a href="/Policy/Index" class="btn btn-link btn-xs btn-link-inverse">POLICY</a><br>
+                             
+                                <a href="/Deals/Index" class="btn btn-link btn-xs btn-link-inverse">DEALS_LOWER</a><br>
+                                   
+                                <a href="/Event/Index" class="btn btn-link btn-xs btn-link-inverse">EVENTS</a><br>
+                                  
+                                <a href="/Pricing/Index" class="btn btn-link btn-xs btn-link-inverse">PRICING</a><br>
+                                  
+                                <a href="/Epharmacy/Index" class="btn btn-link btn-xs btn-link-inverse">Epharmacy</a><br>
+                                 
+                             
+                                <a href="/EDL/Index" class="btn btn-link btn-xs btn-link-inverse">EDL</a><br>
+                                  
+                                <a href="/RDL/Index" class="btn btn-link btn-xs btn-link-inverse">RDL</a><br>
+                                 
+                                <a href="/DrugInsert/Index" class="btn btn-link btn-xs btn-link-inverse">DRUG_INSER_LOWER</a><br>
+                                   
+                                <a href="/ClinicalPathway/Index" class="btn btn-link btn-xs btn-link-inverse">CP</a><br>
+                                
+                                <a href="/ADR/Info" class="btn btn-link btn-xs btn-link-inverse">ADRdescription</a><br>
+                                   
+                                <a href="/GMP/Index" class="btn btn-link btn-xs btn-link-inverse">GMP</a><br>
+                                  
+                             
+                                <a href="/Wholesaler/Index" class="btn btn-link btn-xs btn-link-inverse">WHOLESALERS</a><br>
+                                  
+                                <a href="/Pharmacy/Index" class="btn btn-link btn-xs btn-link-inverse">PHARMACY</a><br>
+                                   
+                                <a href="/Advertisement/Index" class="btn btn-link btn-xs btn-link-inverse">AD</a><br>
+                                   
+                                <a href="/Tools/CompetitiveIntelligence" class="btn btn-link btn-xs btn-link-inverse">CI_TOOL</a><br>
+                                 
+                                <a href="/PipelineStats/Index" class="btn btn-link btn-xs btn-link-inverse">PIPELINE_STATS</a><br>
+                                   
+                                <a href="" class="btn btn-link btn-xs btn-link-inverse">BRAND_MANAGER_VIEW</a><br>
+                                  
+                                <a href="/Benchmark/Index" class="btn btn-link btn-xs btn-link-inverse">BENCHMARK_TOOL</a><br>
+                                   
+                            }
+                        }
+                    }
+                    <hr />
+                  
+                             
+                                    <span class="badge"><i class="icon-locked"></i></span><a href="/News/Index" class="btn btn-link btn-xs disabled btn-link-inverse">NEWS_WIRE_LOWER</a><br>
+                               
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Product/Index" class="btn btn-link btn-xs disabled btn-link-inverse">PRODUCTS_LOWER</a><br>
+                               
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Company/Index" class="btn btn-link btn-xs disabled btn-link-inverse">COMPANY_LOWER</a><br>
+                                 
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Pipeline/Index" class="btn btn-link btn-xs disabled btn-link-inverse">PIPELINES_LOWER</a><br>
+                                
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Registration/Index" class="btn btn-link btn-xs disabled btn-link-inverse">REGISTRATION_LOWER</a><br>
+                                
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Tendering/Index" class="btn btn-link btn-xs disabled btn-link-inverse">TENDERING</a><br>
+                                 
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/ClinicalTrial/Index" class="btn btn-link btn-xs disabled btn-link-inverse">CLINICALTRIAL</a><br>
+                                  
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Policy/Index" class="btn btn-link btn-xs disabled btn-link-inverse">POLICY</a><br>
+                                  
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Deals/Index" class="btn btn-link btn-xs disabled btn-link-inverse">DEALS_LOWER</a><br>
+                                 
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Event/Index" class="btn btn-link btn-xs disabled btn-link-inverse">EVENTS</a><br>
+                                 
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Pricing/Index" class="btn btn-link btn-xs disabled btn-link-inverse">PRICING</a><br>
+                                  
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Epharmacy/Index" class="btn btn-link btn-xs disabled btn-link-inverse">Epharmacy</a><br>
+                                 
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/EDL/Index" class="btn btn-link btn-xs disabled btn-link-inverse">EDL</a><br>
+                                    
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/RDL/Index" class="btn btn-link btn-xs disabled btn-link-inverse">RDL</a><br>
+                                   
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/DrugInsert/Index" class="btn btn-link btn-xs disabled btn-link-inverse">DRUG_INSER_LOWER</a><br>
+                                
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/ClinicalPathway/Index" class="btn btn-link btn-xs disabled btn-link-inverse">CP</a><br>
+                                 
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/ADR/Info" class="btn btn-link btn-xs disabled btn-link-inverse">ADRdescription</a><br>
+                                
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/GMP/Index" class="btn btn-link btn-xs disabled btn-link-inverse">GMP</a><br>
+                                  
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Wholesaler/Index" class="btn btn-link btn-xs disabled btn-link-inverse">WHOLESALERS</a><br>
+                                  
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Pharmacy/Pharmacy" class="btn btn-link btn-xs disabled btn-link-inverse">PHARMACY</a><br>
+                                  
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Advertisement/Index" class="btn btn-link btn-xs disabled btn-link-inverse">AD</a><br>
+                                    
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Tools/CompetitiveIntelligence" class="btn btn-link btn-xs disabled btn-link-inverse">CI_TOOL</a><br>
+                                   
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/PipelineStats/Index" class="btn btn-link btn-xs disabled btn-link-inverse">PIPELINE_STATS</a><br>
+                                   
+                                <span class="badge"><i class="icon-locked"></i></span><a href="" class="btn btn-link btn-xs disabled btn-link-inverse">BRAND_MANAGER_VIEW</a><br>
+                                  
+                                <span class="badge"><i class="icon-locked"></i></span><a href="/Benchmark/Index" class="btn btn-link btn-xs disabled btn-link-inverse">BENCHMARK_TOOL</a><br>
+                                   
+                            }
+                        }
+                    }
+                </div>
+                <div id="country-latin" class=" dropdown-div">
+                    <br />
+                    <a href="/News/Index" class="btn btn-link btn-xs btn-link-inverse">NEWS_WIRE_LOWER</a>
+                    <br />
+                    <a href="/Home/LatamProduct" class="btn btn-link btn-xs btn-link-inverse">PRODUCTS_LOWER</a>
+                    <br />
+                    <a href="/Home/LatamRegistration" class="btn btn-link btn-xs btn-link-inverse">REGISTRATION_LOWER</a>
+                    <br />
+                    <a href="/Home/LatamClinicalTrials" class="btn btn-link btn-xs btn-link-inverse">CLINICALTRIAL</a>
+                    <br />
+                </div>
+                <div class="pvl">
+                    @*<a href="#" class="text-primary">Feedback</a><br />
+                        <a class="text-primary">Training</a><br />*@
+                    <a href="tel:+862153022951" class="text-primary"><span class="icon-phone2"></span>&nbsp;&nbsp;(8621) 5302 2951</a><br />
+                    <a href="mailto:support@gbisource.com" class="text-primary"><span class="icon-mail"></span>&nbsp;&nbsp;support@gbisource.com</a><br />
+                </div>
+            </div>
+
+        </div>
+    </aside>
+
+    <!--The saved modal, including SearchEditModal, DeleteSearchModal, SearchHistoryModal-->
+    @RenderSection("SavedModal", false)
+    <div class="page-container">
+        <div class="main-content">
+            <div class="container-fluid">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button id="leftSliderToggle" status="aarowLeft"><span class="icon-chevron-left"></span></button>
+                        <a href="/Home/Index" class="animated fadeIn hide sublogo">
+                            <img src="/Content/images/logoGBISOURCE_png.png" height="28" alt="" />
+                        </a>
+                        <!-- logo -->
+
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+                            <span class="sr-only">TOGGLE_NAVIGATION</span>
+                        </button>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-02">
+                            <span class="sr-only">TOGGLE_NAVIGATION</span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/Profile">Admin</a></li>
+                            <li class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle lanVal" data-toggle="dropdown">@*EN <b class="caret"></b>*@</a>
+                                <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+                                <ul class="dropdown-menu dropdown-inverse languageList">
+                                    <li><a class="language " href="@Url.Action("ChangeLanguage", "Home", new {language = "EN"})">EN</a></li>
+                                    <li><a class="language " href="@Url.Action("ChangeLanguage", "Home", new {language = "CN"})">CN</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button class="btn btn-danger navbar-btn btn-xs" id="logout">LOGOUT</button>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav><!-- /navbar -->
+            </div> <!--/ container-fluid-->
+
+            <nav class="navbar-inverse">
+                <div class="collapse navbar-collapse" id="navbar-collapse-02">
+                    <ul class="nav navbar-nav  bunlde-ul" id="bundle-china">
+                        <li class=""><a href="/News/Index"><span class="icon-article"></span>&nbsp;&nbsp;NEWS</a></li>
+                        <li class=""><a href="/Product/Index"><span class="icon-pill" style=""></span>&nbsp;&nbsp;PRODUCTS</a></li>
+                        <li class=""><a href="/Company/Index"><span class="icon-building-o" style=""></span>&nbsp;&nbsp;COMPANY</a></li>
+                        <li class=""><a href="/Pipeline/Index"><span class="icon-angle-double-right" style=""></span>&nbsp;&nbsp;PIPELINES</a></li>
+                        <li class=""><a href="/Registration/Index"><span class="icon-legal" style=""></span>&nbsp;&nbsp;REGISTRATION</a></li>
+                        <li class=""><a href="/Tendering/Index"><span class="icon-dollar" style=""></span>&nbsp;&nbsp;TENDERING</a></li>
+                        <li class=""><a href="/ClinicalTrial/Index"><span class="icon-lab3" style=""></span>&nbsp;&nbsp;CLINICALTRIAL</a></li>
+                        <li class=""><a href="/Policy/Index"><span class="icon-bullhorn" style=""></span>&nbsp;&nbsp;POLICY</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav  bunlde-ul" id="bundle-latam">
+                        <li class=""><a href="/News/Index"><span class="icon-article"></span>&nbsp;&nbsp;NEWS</a></li>
+                        <li class=""><a href="/Home/LatamProduct"><span class="icon-pill" style=""></span>&nbsp;&nbsp;PRODUCTS</a></li>
+                        <li class=""><a href="/Home/LatamRegistration"><span class="icon-legal" style=""></span>&nbsp;&nbsp;REGISTRATION</a></li>
+                        <li class=""><a href="/Home/LatamClinicalTrials"><span class="icon-lab3" style=""></span>&nbsp;&nbsp;CLINICALTRIAL</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="rightScrollCon">
+                <div class="container-fluid pbl">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @RenderBody()
+                        </div> <!--col-->
+                    </div> <!--row-->
+                </div> <!--container-fluid-->
+
+
+                <div class="bottom-menu">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                @*<p class="lead"><strong>200,000 </strong>MORE_SPECIALITIES_AVAILABLE</p>*@
+                                <p class="lead"></p>
+                                @*SUBSCRIBE_TO_A_PREMIUM_ACCOUNT*@
+                                <div class="mtm mbl">
+                                    @*<a id="subScribe" class="btn btn-primary btn-embossed">SUBSCRIBE</a>*@
+                                    @*&nbsp;&nbsp;OR*@ @*<a class="btn btn-link" href="javascript:;">*@@*LEARN_MORE*@@*</a>*@
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-sm-offset-1">
+                                <p class="lead">FEEDBACK</p>
+                                <textarea rows="3" placeholder="FEEDBACK_WATERMARK" class="form-control flat mbm" id="feedbackcontent" maxlength="1000"></textarea>
+                                <div id="feedbackSuccessInfo" class="hide">Thank you for your feedback. We will address this item as quickly as possible. GBI Team</div>
+                                <a id="requestTrainingBtn" class="btn btn-link" type="button" data-toggle="modal" data-target="#RequestTrainingModal"><span class="icon-mortar-board"></span>&nbsp;&nbsp;Requesttraining</a>
+
+                                <a class="btn btn-primary btn-embossed pull-right" href="javascript:;" id="MailBtn"><span class="icon-email"></span>&nbsp;&nbsp;SUBMIT</a>
+                                <br /><br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="master-footer">
+                    <div class="bottom-menu bottom-menu-large">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6">
+                                    <a href="javascript:;"><img src="/Content/images/logo-GBI.png" width="105" alt="GBI Logo"></a>
+                                    <address>
+                                        <small>
+                                            <a href="http://www.gbihealth.com">WWW_GBIHEALTH_COM</a>
+                                            <br><a href="tel:+862153022951">TEL1</a>
+                                            <br><a href="tel:+862153022950">TEL2</a>
+                                        </small>
+                                    </address>
+                                </div>
+                                <div class="col-sm-6 col-md-2">
+                                    <h5 class="title">PRODUCTS1</h5>
+                                    <ul class="bottom-links mbl">
+                                        <li><a href="http://www.gbihealth.com/source.aspx">SOURCE</a></li>
+                                        <li><a href="http://www.gbihealth.com/navisdata.aspx">NAVIS</a></li>
+                                        <li><a href="http://www.gbihealth.com/metrix.aspx">METRIX</a></li>
+                                        <li><a href="http://www.gbihealth.com/devint.aspx">DEVINT</a></li>
+                                        @*<li><a href="http://www.gbihealth.com/jibomobiledetail.aspx">PHYSICIAN_ENGAGEMENT</a></li>
+                                            <li><a href="http://www.gbihealth.com/adherencesolution.aspx">PATIENT_SUPPORT_PROGRAMS</a></li>*@
+                                    </ul>
+                                </div>
+                                <div class="clearfix visible-sm"></div>
+                                <div class="col-sm-6 col-md-2">
+                                    <h5 class="title">SUPPORT</h5>
+                                    <ul class="bottom-links mbl">
+                                        <li><a href="javascript:;">UsageGuide</a></li>
+                                        <li><a href="" data-toggle="modal" data-target="#SystemModal">Systemrequirements</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 col-md-2">
+                                    <h5 class="title">CONTACT_GBI</h5>
+                                    <ul class="bottom-links mbl">
+                                        <li><a href="mailto:info@generalbiologic.com?Subject=Hello" target="_top" class="btn btn-inverse btn-sm mbs"><span class="icon-mail"></span>&nbsp;&nbsp;CONTACT_GBI</a></li>
+                                        <li><a href="https://www.linkedin.com/company/general-biologic">LINKEDIN</a></li>
+                                        @*<li><a href="javascript:;">WECHAT</a></li>*@
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 additional-links">
+                                    <small>GB_GROUP_LIMITED_ALL_RIGHTS_RESERVED&nbsp;&nbsp;&nbsp;</small>
+                                    <a href="" class="mrm" data-toggle="modal" data-target="#TermsModal">TERMS_OF_SERVICE</a>
+                                    <a href="" class="mrm" data-toggle="modal" data-target="#PrivacyModal">PRIVACY_POLICY</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- / master-footer -->
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <header class="logo-env">
+                <div class="logo">
+                    <a href="/Home/Index">
+                        <img src="/Content/images/logoGBISOURCE_png.png" height="38" alt="" />
+                    </a>
+                </div>
+                <!-- logo -->
+            </header>
+            <div class="container-fluid bg-secondary" id="menuTitle">
+                <nav class="navbar-inverse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a data-sidebar-button class="btn-circle dropdown-toggle"><span class="icon-th-menu"></span></a>
+                        </li>
+                        <li class=""><a href="/Home/Index"><span class="icon-home4"></span>&nbsp;&nbsp;HOME</a></li>
+                        <li class="disabled"><a href="javascript:;"><span class="icon-tags3"></span>&nbsp;&nbsp;CATALOG</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="container-fluid">
+                <button type="button" class="navbar-toggle facestBtn">
+                    <span class="sr-only">TOGGLE_NAVIGATION</span>
+                </button>
+            </div>
+            <div class="leftScrollCon">
+                @RenderSection("Factedbar", false)
+            </div>
+        </div>
+
+        <!--main-content-->
+    </div>
+
+    <!--page-container-->
+    <div class="overlay" data-sidebar-overlay></div> <!-- Sidebar right overlay -->
+    <!-- Load JS here for greater good =============================-->
+
+    <div class="modal fade" id="RequestTrainingModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <!--_RequestTrainingModalPartial-->
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-times" data-dismiss="modal"><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="ModalLabel">Requesttraining</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Tell us what you need!
+                    </p>
+                    <div class="mbs"><a id="requestSysInfo" href="javascript:;" title="I am a new user – I need a system introduction"><span class="icon-chevron-circle-right mrm"></span><span>I am a new user – I need a system introduction</span></a></div>
+                    <div class="mbs"><a href="javascript:;"><span class="icon-chevron-circle-right mrm"></span>Can you explain this a bit more? </a></div>
+
+                    <div class="mvm">
+                        <i>Do you want to:</i>
+                        <label class="checkbox explainMore">
+                            <span class="icons"><span class="first-icon"></span><span class="second-icon"></span></span><input type="checkbox" value="Know the source for this content" data-toggle="checkbox">
+                            Know the source for this content
+                        </label>
+                        <label class="checkbox explainMore" for="checkbox2">
+                            <span class="icons"><span class="first-icon"></span><span class="second-icon"></span></span><input type="checkbox" value="Understand how frequently  this content is updated?" data-toggle="checkbox">
+                            Understand how frequently  this content is updated?
+                        </label>
+                        <label class="checkbox explainMore" for="checkbox2">
+                            <span class="icons"><span class="first-icon"></span><span class="second-icon"></span></span><input type="checkbox" value="Learn more about  our process  for capturing and standardizing this content" id="checkbox2" data-toggle="checkbox">
+                            Learn more about  our process  for capturing and standardizing this content
+                        </label>
+                        <label class="checkbox explainMore" for="checkbox2">
+                            <span class="icons"><span class="first-icon"></span><span class="second-icon"></span></span><input type="checkbox" value="Understand the industry process" data-toggle="checkbox">
+                            Understand the industry process
+                        </label>
+                        <button id="explainMore" class="btn btn-progress btn-wide btn-primary btn-embossed" data-style="shrink" data-horizontal>Submit</button>
+                    </div>
+
+                    <div class="mbs"><a href="javascript:;"><span class="icon-chevron-circle-right mrm"></span>I would like advanced training on specific content</a></div>
+                    <div class="mvm">
+                        <i>I’m interested in learning more about:</i>
+                        <label class="checkbox learanMore">
+                            <span class="icons"><span class="first-icon"></span><span class="second-icon"></span></span><input type="checkbox" value="Products" data-toggle="checkbox">
+                            Products
+                        </label>
+                        <label class="checkbox learanMore" for="checkbox2">
+                            <span class="icons"><span class="first-icon"></span><span class="second-icon"></span></span><input type="checkbox" value="Companies" data-toggle="checkbox">
+                            Companies
+                        </label>
+                        <label class="checkbox learanMore" for="checkbox2">
+                            <span class="icons"><span class="first-icon"></span><span class="second-icon"></span></span><input type="checkbox" value="Pipeline analysis" data-toggle="checkbox">
+                            Pipeline analysis
+                        </label>
+                        <label class="checkbox learanMore" for="checkbox2">
+                            <span class="icons"><span class="first-icon"></span><span class="second-icon"></span></span><input type="checkbox" value="Recent policies" data-toggle="checkbox">
+                            Recent policies
+                        </label>
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="RequestTrainingComment"><i>Please provide a brief description on how we might help?</i></label>
+                                <textarea id="RequestTrainingComment" class="form-control" rows="3" maxlength="1000"></textarea>
+                            </div>
+                            <button class="btn btn-progress btn-wide btn-primary btn-embossed" id="learanMore" data-style="shrink" data-horizontal>Submit</button>
+                        </form>
+                    </div>
+                    <div id="requestTrainingSuccessInfo" class="hide text-primary">Thank you for your request. We will address this item as quickly as possible. GBI Team</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal used in BMT -->
+    @RenderSection("CompareModal", false)
+    <!-- / Modal -->
+
+    <script>
+        $(function () {
+            function leftbarPatch() {
+                $(".leftScrollCon").css("height", (window.innerHeight - $(".logo-env")[0].offsetHeight - $("#menuTitle")[0].offsetHeight) + "px");
+                $('[data-sidebar]').css('height', ($(window).height() - 50) + 'px');
+            }
+
+            $(window).resize(function () {
+                leftbarPatch();
+            });
+
+            $(".sidebar-menu").unbind("DOMSubtreeModified").bind("DOMSubtreeModified", function () {
+                leftbarPatch();
+            });
+
+            leftbarPatch();
+            $('.overlay-menu').slimscroll({
+                height: '100%',
+                wheelStep: 35
+            });
+
+            $('#sidebar-bundle > li > a').unbind('click').bind('click', function () {
+                var _this = $(this);
+                var id = _this.data("id");
+                $(".dropdown-div").addClass("hidden");
+                $("#" + id + "").removeClass("hidden");
+                var data = id === 'country-latin' ? 'Latam' : 'China';
+                $.ajax({
+                    url: '/Home/SetUserBundle',
+                    type: 'get',
+                    dataType: 'json',
+                    data: { bundle: data },
+                    axync: true,
+                    success: function () {
+                        $(".btn-group > .dropdown-toggle > .sidebar-name").text(_this.text());
+                        $(".btn-group > .dropdown-toggle").trigger('click');
+                        if ($('.bunlde-ul').length > 1) {
+                            if (id === 'country-latin') {
+                                $('#bundle-latam').removeClass('hidden').siblings().addClass('hidden');
+                            } else {
+                                $('#bundle-china').removeClass('hidden').siblings().addClass('hidden');
+                            }
+                        }
+                    }
+                });
+            });
+            if (!$("#errorPage").val()) {
+                /****User Terms***/
+                if ($("#UserTerms").data("check").toLowerCase() === 'false') {
+
+                    $('#UserTerms').on('click', '#agree-checkbox', function () {
+                        var _this = $(this);
+                        if (_this.hasClass('checked')) {
+                            _this.removeClass('checked');
+                            $('#submit-btn').addClass('disabled btn-default').removeClass('btn-primary');
+                        } else {
+                            _this.addClass('checked');
+                            $('#submit-btn').removeClass('disabled btn-default').addClass('btn-primary');
+                        }
+                    });
+                    $('#UserTerms').modal({
+                        keyboard: false,
+                        show: true,
+                        backdrop: 'static'
+                    });
+                    $('#UserTerms').on('shown.bs.modal', function () {
+
+                        $.ajax({
+                            url: '/Home/GetUserTermsContent',
+                            type: 'get',
+                            dataType: 'html',
+                            axync: true,
+                            success: function (result) {
+                                $('#UserTerms .modal-content').html(result);
+                                $('#UserTerms .tag-primary:odd').addClass('col-xs-offset-1');
+                                $('#text-scroll').height(88).perfectScrollbar({
+                                    minScrollbarLength: 10
+                                });
+                                $('.ps-scrollbar-y-rail').css({ 'display': 'block', 'opacity': 1 });
+                            }
+                        });
+                    });
+
+                    $('#UserTerms').on('click', '#submit-btn', function () {
+                        $('#UserTerms').modal('hide');
+
+                        $.ajax({
+                            url: '/Account/UpdateUserTerms',
+                            type: "post",
+                            async: true,
+                            dateType: "json",
+                            success: function () {
+
+                            }
+                        });
+                    });
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
